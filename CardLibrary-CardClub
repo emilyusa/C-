@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardLibrary
+{
+    public class CardClub: SuperCard
+    {
+        private Suit _CardSuit = Suit.Club;
+
+        public override Suit CardSuit
+        {
+            get
+            { return _CardSuit; }
+        }
+
+        public CardClub(Rank pRank)
+        {
+            CardRank = pRank;
+        }
+        public override void Display()
+        {
+            // Code to Display a Club card...
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine(CardRank + " of " + CardSuit + "s ♠");
+            Console.ResetColor();
+        }
+
+    }
+}
