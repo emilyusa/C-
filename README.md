@@ -1,2 +1,2 @@
-# C-
-C# projects and assignments
+# C#
+C# projects - Poker Game
