@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardLibrary
+{
+    public class CardSpade: SuperCard
+    {
+        private Suit _CardSuit = Suit.Spade;
+
+        public override Suit CardSuit
+        {
+            get
+            { return _CardSuit; }
+        }
+        public CardSpade(Rank pRank)
+        {
+            CardRank = pRank;
+        }
+        public override void Display()
+        {
+            // Code to Display a spade card...
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(CardRank + " of " + CardSuit + "s ♣");
+            Console.ResetColor();
+        }
+
+    }
+}
