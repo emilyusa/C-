@@ -1,0 +1,85 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardLibrary
+{
+    public class CardSet
+    {
+        public SuperCard[] cardArray;
+        Random rand = new Random();
+        int CardsNum = 52;
+        public void ResetUsage()
+        {
+            for (var i = 0; i < CardsNum; i++)
+            {
+                cardArray[i].inplay = false;
+            }
+        }
+
+        public SuperCard GetOneCard()
+        {
+            SuperCard ReplaceCard;
+            for (int i = 0; i < 1; i++)
+            {
+                int index = rand.Next(CardsNum);
+                if (cardArray[index].inplay == false)
+                {
+                    ReplaceCard = cardArray[index];
+                    cardArray[index].inplay = true;
+                    return ReplaceCard;
+                }
+                else
+                {
+                    i--;
+                }
+            }
+            return null;
+        }
+
+        public CardSet()
+        {
+            cardArray = new SuperCard[CardsNum];
+            for (var i = 0; i < CardsNum; i++) {
+                if (i / 13 == 0)
+                {
+                    cardArray[i] =new CardClub((Rank)(i + 2));
+                    
+                }
+                else if (i / 13 == 1)
+                {
+                    cardArray[i] = new CardDiamond((Rank)(i + 2 - 13));
+                    
+                }
+                else if (i / 13 == 2)
+                {
+                    cardArray[i]=new CardHeart((Rank)(i + 2 - 26));
+                    
+                }
+                else {
+                    cardArray[i] =new CardSpade((Rank)(i + 2 - 39));
+                    
+                }
+            }
+        }
+
+        public SuperCard[] GetCards(int pnumber) {
+
+            SuperCard[] hand = new SuperCard[pnumber];
+            for (int i = 0; i < pnumber; i++) {
+                int index =rand.Next(CardsNum);
+                if (cardArray[index].inplay == false)
+                {
+                    hand[i] = cardArray[index];
+                    cardArray[index].inplay = true;
+                }
+                else {
+                    i--;
+                }
+            }
+            return hand;
+        }
+    }
+}
